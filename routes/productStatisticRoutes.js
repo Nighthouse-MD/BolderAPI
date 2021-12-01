@@ -19,5 +19,6 @@ router.post('/byProductIds', function (req, res, next) {
         console.error(`Error while getting statistics byproductids`, err.message);
         next(err);
     }
+
 });
 export default router;
