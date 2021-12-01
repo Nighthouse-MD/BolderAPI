@@ -1,0 +1,6 @@
+
+const KEYS = {
+    BOL_API_KEY: '86AD71366F6648DE92A92CDDBB68230D'
+}
+
+export { KEYS };

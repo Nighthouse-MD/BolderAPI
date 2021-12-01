@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "bolderapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "barcoder": "^2.0.1",
+    "better-sqlite3": "^7.4.5",
+    "body-parser": "^1.19.0",
+    "expres": "^0.0.5",
+    "express": "^4.17.1"
+  }
+}
