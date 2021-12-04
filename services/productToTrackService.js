@@ -1,4 +1,4 @@
-import { query, run } from '../services/dbService.js';
+import { query, run } from '../services/trackerDBService.js';
 import config from '../config.js';
 import axios from 'axios';
 import { KEYS } from '../Constants.js';

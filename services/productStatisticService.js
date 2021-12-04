@@ -1,4 +1,4 @@
-import { query } from '../services/dbService.js';
+import { query } from '../services/trackerDBService.js';
 import config from '../config.js';
 import groupBy from '../tools/groupBy.js';
 

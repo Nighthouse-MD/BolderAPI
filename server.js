@@ -10,12 +10,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
+    console.log('ping check, alive at ' + new Date().toISOString());
     res.json({ message: 'alive' });
 });
 
-app.use('/productsToTrack', productToTrackRoutes);
-app.use('/products', productRouter);
-app.use('/productStatistics', productStatisticRoutes);
+app.use('/:apiKey/productsToTrack', productToTrackRoutes);
+app.use('/:apiKey/products', productRouter);
+app.use('/:apiKey/productStatistics', productStatisticRoutes);
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);

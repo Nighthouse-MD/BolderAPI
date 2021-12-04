@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "91007e2d-e4d3-4560-94c9-c42d632cd3ed",
+		"name": "bolderapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add productToTrack byEan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bolderapi.nighthouse.io/productstotrack/addbyean/4260134296205",
+					"protocol": "http",
+					"host": [
+						"bolderapi",
+						"nighthouse",
+						"io"
+					],
+					"path": [
+						"productstotrack",
+						"addbyean",
+						"4260134296205"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List productStatistics byEans",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eans_comment\": \"This is a list of EAN numbers, comma separated, each element in quotes\",\r\n    \"eans\": [\r\n        \"0666594201089\",\r\n        \"4260134296205\",\r\n        \"8720256967064\",\r\n        \"8059016590694\",\r\n        \"8032532527849\",\r\n        \"5010415502155\"\r\n    ],\r\n    \"onlyAllSellers_comment\": \"This field is optional and defaults to true. When true, only one statistic for all sellers combimed per timeframe per product is returned. The 'sellerNameId' and 'sellerName' properties will then default to ALL\",\r\n    \"onlyAllSellers\":false\r\n}"
+				},
+				"url": {
+					"raw": "http://bolderapi.nighthouse.io/productStatistics/byeans",
+					"protocol": "http",
+					"host": [
+						"bolderapi",
+						"nighthouse",
+						"io"
+					],
+					"path": [
+						"productStatistics",
+						"byeans"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
