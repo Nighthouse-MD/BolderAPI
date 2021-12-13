@@ -4,7 +4,6 @@ import axios from 'axios';
 import { KEYS } from '../Constants.js';
 import Barcoder from 'barcoder';
 
-
 const addByEan = (ean) => {
   const existing = query(`SELECT * FROM productToTrack WHERE ean = ?`, [ean]);
 

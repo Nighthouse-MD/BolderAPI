@@ -19,10 +19,20 @@ const listByProductIds = (productIds, allSellersOnly = true) => {
 }
 
 const listByEANs = (eans, allSellersOnly = true) => {
+  const productsToTrack = query(`SELECT * FROM productToTrack WHERE ean IN (${eans.map(x => `'${x}'`).toString()})`, []);
   const productStatistics = query(`SELECT * FROM dailyParse WHERE ean IN (${eans.map(x => `'${x}'`).toString()})${(allSellersOnly ? " AND sellerId = 'ALL'" : '')} ORDER BY ean, dayStart`, []);
   const groupedByEAN = groupBy(productStatistics, 'ean');
 
-  return groupedByEAN.map(x => { return { ean: x[0].ean, productStatistics: x }; });
+  return productsToTrack.map(p => {
+    const productStats = groupedByEAN.find(x => p.ean == x[0].ean)
+    return {
+      ean: p.ean,
+      inactive: p.inactive == 1,
+      inactivatedOn: p.inactivatedOn,
+      reasonForInactivating: p.reasonForInactivating,
+      productStatistics: productStats || []
+    };
+  });
 }
 
 export {

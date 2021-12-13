@@ -6,7 +6,7 @@ import apiKeyCheckWrapper from './apiKeyCheckWrapper.js';
 router.get('/addByEan/:ean', function (req, res, next) {
     apiKeyCheckWrapper(req, res, () => {
         try {
-            const promiseOrString = addByEan(req.params.ean);
+            const promiseOrString = addByEan(req.params.ean, req.params.apiKey);
 
             Promise.resolve(promiseOrString).then((message) =>
                 res.json({ message: message }));
