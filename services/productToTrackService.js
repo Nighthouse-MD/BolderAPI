@@ -11,7 +11,12 @@ const addByEan = (ean) => {
     return `The EAN ${ean} is not valid`;
 
   if (existing.length > 0)
-    return `Already tracking the product: EAN ${ean} - ${existing[0].name}`;
+    if (existing[0].inactive == null)
+      return `Already tracking the product: EAN ${ean} - ${existing[0].name}`;
+    else {
+      const result = run('UPDATE productToTrack SET inactive=NULL, inactivatedOn=NULL, reasonForInactivating=NULL WHERE ean=@ean', { ean });
+      return `Reactivated tracking for the product: EAN ${ean} - ${existing[0].name}`;
+    }
 
   const apiKey = KEYS.BOL_API_KEY;
   const url = `https://api.bol.com/catalog/v4/search/?q=${ean}&offset=0&limit=2&dataoutput=products,categories&apikey=${apiKey}&format=json`;
