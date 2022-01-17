@@ -5,7 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +19,7 @@
     "better-sqlite3": "^7.4.5",
     "body-parser": "^1.19.0",
     "expres": "^0.0.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "websocket": "^1.0.34"
   }
 }

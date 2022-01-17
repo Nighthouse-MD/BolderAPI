@@ -5,6 +5,7 @@ const port = 3001 || process.env.PORT;
 import productRouter from './routes/productRoutes.js';
 import productStatisticRoutes from './routes/productStatisticRoutes.js';
 import productToTrackRoutes from './routes/productToTrackRoutes.js';
+import { sendMessage } from './sockIt.js';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     console.log('ping check, alive at ' + new Date().toISOString());
     res.json({ message: 'alive' });
+
+    sendMessage('pinged!');
 });
 
 app.use('/:apiKey/productsToTrack', productToTrackRoutes);
